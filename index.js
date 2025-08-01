@@ -1,5 +1,7 @@
 import express from 'express';
-import puppeteer, { executablePath } from 'puppeteer-core';
+import puppeteer from 'puppeteer-core';
+
+const CHROME_PATH = '/opt/render/project/.render/chrome/opt/google/chrome/chrome';
 
 const app = express();
 

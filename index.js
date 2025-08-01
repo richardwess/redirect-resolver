@@ -1,6 +1,5 @@
 import express from 'express';
-import puppeteer from 'puppeteer-core';
-import { executablePath } from 'puppeteer';
+import puppeteer, { executablePath } from 'puppeteer-core';
 
 const app = express();
 

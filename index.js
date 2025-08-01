@@ -11,7 +11,7 @@ app.get('/', async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      executablePath: executablePath(), // Use system Chrome from Puppeteer
+      executablePath: CHROME_PATH,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 

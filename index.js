@@ -1,5 +1,6 @@
 import express from 'express';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import { executablePath } from 'puppeteer';
 
 const app = express();
 
@@ -9,8 +10,10 @@ app.get('/', async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
+      executablePath: executablePath(), // Use system Chrome from Puppeteer
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
+
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 15000 });
     const finalUrl = page.url();
@@ -24,5 +27,5 @@ app.get('/', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`✅ Server listening on port ${PORT}`);
 });

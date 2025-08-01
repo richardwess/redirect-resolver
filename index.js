@@ -1,7 +1,5 @@
 import express from 'express';
-import puppeteer from 'puppeteer-core';
-
-const CHROME_PATH = '/opt/render/project/.render/chrome/opt/google/chrome/chrome';
+import puppeteer from 'puppeteer';
 
 const app = express();
 
@@ -11,7 +9,6 @@ app.get('/', async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      executablePath: CHROME_PATH,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
